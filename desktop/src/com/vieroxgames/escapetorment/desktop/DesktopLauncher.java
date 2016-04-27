@@ -7,8 +7,8 @@ import com.vieroxgames.escapetorment.EscapeTorment;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 720;
-		config.height = 480;
+		config.width = 1280;
+		config.height = 720;
 		config.resizable = false;
 		config.backgroundFPS = 60;
 		config.foregroundFPS = 60;
