@@ -27,11 +27,11 @@ android/gen/
 *.iws
 *.iml
 .gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+local.properties
+.idea/workspace.xml
+.idea/libraries
 .DS_Store
-/build
+build
 /captures
 out/
 com_crashlytics_export_strings.xml
