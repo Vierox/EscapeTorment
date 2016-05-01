@@ -3,11 +3,8 @@ package com.vieroxgames.escapetorment.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vieroxgames.escapetorment.EscapeTorment;
-import com.vieroxgames.escapetorment.References;
+import com.vieroxgames.escapetorment.Utils.Handler;
 import com.vieroxgames.escapetorment.World.InitWorld;
 
 /**
@@ -16,23 +13,23 @@ import com.vieroxgames.escapetorment.World.InitWorld;
 public class PlayScreen
     implements Screen
 {
+    private Handler handler;
+    private InitWorld initWorld;
     private EscapeTorment game;
-    private InitWorld world;
 
+    public int value;
 
-    public PlayScreen(EscapeTorment game)
+    public PlayScreen(Handler handler)
     {
-        this.game = game;
-
-        world = new InitWorld(game);
-
-
+        this.handler = handler;
+        initWorld = new InitWorld(handler);
+        value = 1;
     }
 
     @Override
     public void dispose()
     {
-        world.dispose();
+        initWorld.dispose();
     }
 
     @Override
@@ -41,7 +38,8 @@ public class PlayScreen
 
     public void update(float delta)
     {
-        world.update(delta);
+        handler.getInputManager().update();
+        initWorld.update(delta);
     }
 
     @Override
@@ -52,12 +50,12 @@ public class PlayScreen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        world.render();
+        initWorld.render();
     }
 
     @Override
     public void resize(int width, int height)
-    { world.resize(width, height); }
+    { initWorld.resize(width, height); }
 
     @Override
     public void pause()
@@ -70,4 +68,10 @@ public class PlayScreen
     @Override
     public void hide()
     {}
+
+    //GETTERS & SETTERS
+    public InitWorld getInitWorld()
+    {
+        return initWorld;
+    }
 }
